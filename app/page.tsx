@@ -1152,7 +1152,6 @@ export default function Home() {
   return (
     <>
       <div className="h-screen w-full relative overflow-hidden">
-        {/* Top Bar */}
         <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none">
           <div className="flex items-center justify-between px-4 py-2.5">
             <div></div>
