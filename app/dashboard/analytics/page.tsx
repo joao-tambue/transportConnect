@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Card,
@@ -6,10 +6,10 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ChartContainer,
   ChartTooltip,
@@ -17,7 +17,7 @@ import {
   ChartLegend,
   ChartLegendContent,
   type ChartConfig,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart';
 import {
   AreaChart,
   Area,
@@ -28,7 +28,7 @@ import {
   CartesianGrid,
   LineChart,
   Line,
-} from "recharts";
+} from 'recharts';
 import {
   Table,
   TableBody,
@@ -36,43 +36,43 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { TrendingUp, Clock, Star, BarChart3 } from "lucide-react";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/table';
+import { TrendingUp, Clock, Star, BarChart3 } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import {
   WEEKLY_TRENDS,
   PEAK_HOURS_DATA,
   ROUTES_PERFORMANCE,
-} from "@/lib/dashboard-data";
+} from '@/lib/dashboard-data';
 
 // ── Configs ──
 const trendsConfig = {
-  passageiros: { label: "Passageiros", color: "#22c55e" },
-  receita: { label: "Receita (RWF)", color: "#3b82f6" },
+  passageiros: { label: 'Passageiros', color: '#22c55e' },
+  receita: { label: 'Receita (AOA)', color: '#3b82f6' },
 } satisfies ChartConfig;
 
 const peakConfig = {
-  seg: { label: "Segunda", color: "#22c55e" },
-  ter: { label: "Terça", color: "#3b82f6" },
-  qua: { label: "Quarta", color: "#a855f7" },
-  qui: { label: "Quinta", color: "#f97316" },
-  sex: { label: "Sexta", color: "#ef4444" },
+  seg: { label: 'Segunda', color: '#22c55e' },
+  ter: { label: 'Terça', color: '#3b82f6' },
+  qua: { label: 'Quarta', color: '#a855f7' },
+  qui: { label: 'Quinta', color: '#f97316' },
+  sex: { label: 'Sexta', color: '#ef4444' },
 } satisfies ChartConfig;
 
 // Simulate monthly growth data
 const monthlyGrowth = [
-  { month: "Out", ocupacao: 71, pontualidade: 84, satisfacao: 3.8 },
-  { month: "Nov", ocupacao: 74, pontualidade: 86, satisfacao: 3.9 },
-  { month: "Dez", ocupacao: 78, pontualidade: 87, satisfacao: 4.0 },
-  { month: "Jan", ocupacao: 80, pontualidade: 88, satisfacao: 4.1 },
-  { month: "Fev", ocupacao: 79, pontualidade: 87, satisfacao: 4.0 },
-  { month: "Mar", ocupacao: 83, pontualidade: 89, satisfacao: 4.2 },
-  { month: "Abr", ocupacao: 81, pontualidade: 88, satisfacao: 4.1 },
+  { month: 'Out', ocupacao: 71, pontualidade: 84, satisfacao: 3.8 },
+  { month: 'Nov', ocupacao: 74, pontualidade: 86, satisfacao: 3.9 },
+  { month: 'Dez', ocupacao: 78, pontualidade: 87, satisfacao: 4.0 },
+  { month: 'Jan', ocupacao: 80, pontualidade: 88, satisfacao: 4.1 },
+  { month: 'Fev', ocupacao: 79, pontualidade: 87, satisfacao: 4.0 },
+  { month: 'Mar', ocupacao: 83, pontualidade: 89, satisfacao: 4.2 },
+  { month: 'Abr', ocupacao: 81, pontualidade: 88, satisfacao: 4.1 },
 ];
 
 const performanceConfig = {
-  ocupacao: { label: "Ocupação (%)", color: "#22c55e" },
-  pontualidade: { label: "Pontualidade (%)", color: "#3b82f6" },
+  ocupacao: { label: 'Ocupação (%)', color: '#22c55e' },
+  pontualidade: { label: 'Pontualidade (%)', color: '#3b82f6' },
 } satisfies ChartConfig;
 
 export default function AnalyticsPage() {
@@ -90,28 +90,28 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-3">
         {[
           {
-            label: "Média Semanal",
-            value: "45.9k",
-            sub: "passageiros/dia",
-            color: "text-emerald-400",
+            label: 'Média Semanal',
+            value: '45.9k',
+            sub: 'passageiros/dia',
+            color: 'text-emerald-400',
           },
           {
-            label: "Receita Média",
-            value: "RWF 22.9k",
-            sub: "por dia esta semana",
-            color: "text-blue-400",
+            label: 'Receita Média',
+            value: 'AOA 22.9k',
+            sub: 'por dia esta semana',
+            color: 'text-blue-400',
           },
           {
-            label: "Ocupação Média",
-            value: "80.6%",
-            sub: "todas as linhas",
-            color: "text-purple-400",
+            label: 'Ocupação Média',
+            value: '80.6%',
+            sub: 'todas as linhas',
+            color: 'text-purple-400',
           },
           {
-            label: "Taxa de Pontualidade",
-            value: "86.6%",
-            sub: "chegadas a tempo",
-            color: "text-orange-400",
+            label: 'Taxa de Pontualidade',
+            value: '86.6%',
+            sub: 'chegadas a tempo',
+            color: 'text-orange-400',
           },
         ].map((s) => (
           <Card
@@ -120,8 +120,10 @@ export default function AnalyticsPage() {
           >
             <CardContent className="p-4">
               <p className="text-xs text-muted-foreground">{s.label}</p>
-              <p className={cn("text-xl font-bold mt-1", s.color)}>{s.value}</p>
-              <p className="text-[11px] text-muted-foreground mt-0.5">{s.sub}</p>
+              <p className={cn('text-xl font-bold mt-1', s.color)}>{s.value}</p>
+              <p className="text-[11px] text-muted-foreground mt-0.5">
+                {s.sub}
+              </p>
             </CardContent>
           </Card>
         ))}
@@ -155,23 +157,37 @@ export default function AnalyticsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-4">
-                <ChartContainer config={trendsConfig} className="h-[220px] w-full">
+                <ChartContainer
+                  config={trendsConfig}
+                  className="h-[220px] w-full"
+                >
                   <AreaChart data={WEEKLY_TRENDS}>
                     <defs>
                       <linearGradient id="passGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
+                        <stop
+                          offset="5%"
+                          stopColor="#22c55e"
+                          stopOpacity={0.3}
+                        />
+                        <stop
+                          offset="95%"
+                          stopColor="#22c55e"
+                          stopOpacity={0}
+                        />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                    <CartesianGrid
+                      stroke="rgba(255,255,255,0.06)"
+                      vertical={false}
+                    />
                     <XAxis
                       dataKey="day"
-                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                      tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                       axisLine={false}
                       tickLine={false}
                     />
                     <YAxis
-                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                      tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                       axisLine={false}
                       tickLine={false}
                       tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
@@ -193,24 +209,30 @@ export default function AnalyticsPage() {
               <CardHeader className="pb-0">
                 <CardTitle className="text-sm flex items-center gap-2">
                   <BarChart3 className="size-4 text-blue-400" />
-                  Receita Diária (RWF '000)
+                  Receita Diária (AOA 000)
                 </CardTitle>
                 <CardDescription className="text-xs">
                   Receita de bilhetes por dia da semana
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-4">
-                <ChartContainer config={trendsConfig} className="h-[220px] w-full">
+                <ChartContainer
+                  config={trendsConfig}
+                  className="h-[220px] w-full"
+                >
                   <BarChart data={WEEKLY_TRENDS}>
-                    <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                    <CartesianGrid
+                      stroke="rgba(255,255,255,0.06)"
+                      vertical={false}
+                    />
                     <XAxis
                       dataKey="day"
-                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                      tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                       axisLine={false}
                       tickLine={false}
                     />
                     <YAxis
-                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                      tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                       axisLine={false}
                       tickLine={false}
                       tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
@@ -244,22 +266,25 @@ export default function AnalyticsPage() {
             <CardContent className="pt-4">
               <ChartContainer config={peakConfig} className="h-[280px] w-full">
                 <BarChart data={PEAK_HOURS_DATA} barGap={1}>
-                  <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                  <CartesianGrid
+                    stroke="rgba(255,255,255,0.06)"
+                    vertical={false}
+                  />
                   <XAxis
                     dataKey="slot"
-                    tick={{ fontSize: 9, fill: "rgba(255,255,255,0.4)" }}
+                    tick={{ fontSize: 9, fill: 'rgba(255,255,255,0.4)' }}
                     axisLine={false}
                     tickLine={false}
                   />
                   <YAxis
-                    tick={{ fontSize: 9, fill: "rgba(255,255,255,0.4)" }}
+                    tick={{ fontSize: 9, fill: 'rgba(255,255,255,0.4)' }}
                     axisLine={false}
                     tickLine={false}
                     domain={[0, 100]}
                   />
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <ChartLegend content={<ChartLegendContent />} />
-                  {["seg", "ter", "qua", "qui", "sex"].map((d) => (
+                  {['seg', 'ter', 'qua', 'qui', 'sex'].map((d) => (
                     <Bar
                       key={d}
                       dataKey={d}
@@ -277,22 +302,22 @@ export default function AnalyticsPage() {
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
             {[
               {
-                title: "Período mais crítico",
-                value: "06h – 08h",
-                sub: "Média de 92% em dias úteis",
-                icon: "🔴",
+                title: 'Período mais crítico',
+                value: '06h – 08h',
+                sub: 'Média de 92% em dias úteis',
+                icon: '🔴',
               },
               {
-                title: "Dia com maior fluxo",
-                value: "Sexta-feira",
-                sub: "Média 14% superior ao restante da semana",
-                icon: "📈",
+                title: 'Dia com maior fluxo',
+                value: 'Sexta-feira',
+                sub: 'Média 14% superior ao restante da semana',
+                icon: '📈',
               },
               {
-                title: "Período com menor ocupação",
-                value: "10h – 12h",
-                sub: "Janela ideal para manutenção programada",
-                icon: "🟢",
+                title: 'Período com menor ocupação',
+                value: '10h – 12h',
+                sub: 'Janela ideal para manutenção programada',
+                icon: '🟢',
               },
             ].map((ins) => (
               <Card
@@ -303,7 +328,9 @@ export default function AnalyticsPage() {
                   <p className="text-xl mb-1">{ins.icon}</p>
                   <p className="text-xs text-muted-foreground">{ins.title}</p>
                   <p className="text-base font-bold mt-0.5">{ins.value}</p>
-                  <p className="text-[11px] text-muted-foreground mt-1">{ins.sub}</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    {ins.sub}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -329,15 +356,18 @@ export default function AnalyticsPage() {
                   className="h-[220px] w-full"
                 >
                   <LineChart data={monthlyGrowth}>
-                    <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                    <CartesianGrid
+                      stroke="rgba(255,255,255,0.06)"
+                      vertical={false}
+                    />
                     <XAxis
                       dataKey="month"
-                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                      tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                       axisLine={false}
                       tickLine={false}
                     />
                     <YAxis
-                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                      tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                       axisLine={false}
                       tickLine={false}
                       domain={[60, 100]}
@@ -375,10 +405,18 @@ export default function AnalyticsPage() {
                 <Table>
                   <TableHeader>
                     <TableRow className="border-white/8 hover:bg-transparent">
-                      <TableHead className="text-[10px] text-muted-foreground pl-4">Rota</TableHead>
-                      <TableHead className="text-[10px] text-muted-foreground">Ocup.</TableHead>
-                      <TableHead className="text-[10px] text-muted-foreground">Pont.</TableHead>
-                      <TableHead className="text-[10px] text-muted-foreground">Satis.</TableHead>
+                      <TableHead className="text-[10px] text-muted-foreground pl-4">
+                        Rota
+                      </TableHead>
+                      <TableHead className="text-[10px] text-muted-foreground">
+                        Ocup.
+                      </TableHead>
+                      <TableHead className="text-[10px] text-muted-foreground">
+                        Pont.
+                      </TableHead>
+                      <TableHead className="text-[10px] text-muted-foreground">
+                        Satis.
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -388,10 +426,10 @@ export default function AnalyticsPage() {
                           <div className="flex items-center gap-1.5">
                             <span
                               className={cn(
-                                "w-1.5 h-1.5 rounded-full shrink-0",
-                                r.status === "active"
-                                  ? "bg-emerald-500"
-                                  : "bg-amber-500"
+                                'w-1.5 h-1.5 rounded-full shrink-0',
+                                r.status === 'active'
+                                  ? 'bg-emerald-500'
+                                  : 'bg-amber-500'
                               )}
                             />
                             {r.route}
@@ -412,12 +450,12 @@ export default function AnalyticsPage() {
                           <Badge
                             variant="outline"
                             className={cn(
-                              "text-[9px] h-4 px-1.5",
+                              'text-[9px] h-4 px-1.5',
                               r.onTime >= 90
-                                ? "border-emerald-500/30 text-emerald-400"
+                                ? 'border-emerald-500/30 text-emerald-400'
                                 : r.onTime >= 80
-                                ? "border-amber-500/30 text-amber-400"
-                                : "border-red-500/30 text-red-400"
+                                  ? 'border-amber-500/30 text-amber-400'
+                                  : 'border-red-500/30 text-red-400'
                             )}
                           >
                             {r.onTime}%

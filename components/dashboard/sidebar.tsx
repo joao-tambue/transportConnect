@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import {
   LayoutDashboard,
   BarChart3,
@@ -14,35 +14,49 @@ import {
   AlertTriangle,
   LogOut,
   Map,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { ENTITIES } from "@/lib/dashboard-data";
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { ENTITIES } from '@/lib/dashboard-data';
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Operacional", icon: LayoutDashboard, exact: true },
-  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/dashboard/planning", label: "Planeamento IA", icon: Brain },
-  { href: "/dashboard/financeiro", label: "Financeiro", icon: Wallet },
-  { href: "/dashboard/incidentes", label: "Incidentes", icon: AlertTriangle, badge: 3 },
+  {
+    href: '/dashboard',
+    label: 'Operacional',
+    icon: LayoutDashboard,
+    exact: true,
+  },
+  { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
+  { href: '/dashboard/planning', label: 'Planeamento IA', icon: Brain },
+  { href: '/dashboard/financeiro', label: 'Financeiro', icon: Wallet },
+  {
+    href: '/dashboard/incidentes',
+    label: 'Incidentes',
+    icon: AlertTriangle,
+    badge: 3,
+  },
 ];
 
 export default function DashboardSidebar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [entityKey, setEntityKey] = useState("rtda");
-  const [userEmail, setUserEmail] = useState("admin@rtda.gov.rw");
+  const [entityKey, setEntityKey] = useState(() => {
+    if (typeof window !== 'undefined')
+      return localStorage.getItem('tc_entity') ?? 'antt';
+    return 'antt';
+  });
+  const [userEmail, setUserEmail] = useState(() => {
+    if (typeof window !== 'undefined')
+      return localStorage.getItem('tc_user') ?? 'admin@antt.gov.ao';
+    return 'admin@antt.gov.ao';
+  });
 
-  useEffect(() => {
-    setEntityKey(localStorage.getItem("tc_entity") ?? "rtda");
-    setUserEmail(localStorage.getItem("tc_user") ?? "admin@rtda.gov.rw");
-  }, []);
-
-  const entityInfo = ENTITIES[entityKey as keyof typeof ENTITIES] ?? ENTITIES.rtda;
+  const entityInfo =
+    ENTITIES[entityKey as keyof typeof ENTITIES] ?? ENTITIES.antt;
 
   const handleLogout = () => {
     localStorage.clear();
-    router.push("/login");
+    router.push('/login');
   };
 
   return (
@@ -61,9 +75,7 @@ export default function DashboardSidebar() {
           <p className="text-xs font-semibold text-emerald-400">
             {entityInfo.short}
           </p>
-          <p className="text-xs text-muted-foreground">
-            {entityInfo.name}
-          </p>
+          <p className="text-xs text-muted-foreground">{entityInfo.name}</p>
         </div>
       </div>
 
@@ -79,10 +91,10 @@ export default function DashboardSidebar() {
             <Link key={item.href} href={item.href}>
               <div
                 className={cn(
-                  "flex items-center gap-2 px-3 py-2 rounded-lg text-sm cursor-pointer",
+                  'flex items-center gap-2 px-3 py-2 rounded-lg text-sm cursor-pointer',
                   isActive
-                    ? "bg-emerald-600 text-white"
-                    : "text-muted-foreground hover:bg-muted"
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-muted-foreground hover:bg-muted'
                 )}
               >
                 <Icon className="size-4" />

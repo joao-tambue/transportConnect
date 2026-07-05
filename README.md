@@ -1,8 +1,8 @@
-# TransportConnect Rwanda
+# TransportConnect Angola
 
 ## Overview
 
-TransportConnect Rwanda is a web-based platform designed to improve transport connectivity, efficiency, and safety across Rwanda. The system aligns with the objectives of the NST2 (National Strategy for Transformation), focusing on enhancing mobility to support economic growth and trade.
+TransportConnect Angola is a web-based platform designed to improve transport connectivity, efficiency, and safety across Angola. The system aligns with the objectives of the PDN (Plano de Desenvolvimento Nacional), focusing on enhancing mobility to support economic growth and trade.
 
 The platform provides real-time transport data, user-generated reports, and intelligent routing powered by data analysis and machine learning. It serves both the general public and government institutions through a unified web application.
 
@@ -10,9 +10,9 @@ The platform provides real-time transport data, user-generated reports, and inte
 
 ## Problem Statement
 
-Rwanda faces several transportation challenges that impact economic development:
+Angola faces several transportation challenges that impact economic development:
 
-- Urban congestion, especially in Kigali
+- Urban congestion, especially in Luanda
 - Poor road conditions in rural areas
 - Inefficiencies in public transportation systems
 - Limited real-time visibility into traffic and road conditions
@@ -23,7 +23,7 @@ These issues reduce productivity, increase travel time, and hinder trade and log
 
 ## Solution
 
-TransportConnect Rwanda offers a centralized web platform that integrates:
+TransportConnect Angola offers a centralized web platform that integrates:
 
 - Real-time traffic and route visualization
 - Crowdsourced incident reporting
@@ -123,9 +123,6 @@ Core features:
 
 ---
 
-
----
-
 ## Access Control
 
 The platform uses a role-based access control (RBAC) model:
@@ -150,9 +147,9 @@ The platform uses a role-based access control (RBAC) model:
 
 Potential stakeholders include:
 
-- Rwanda Transport Development Agency (RTDA)
-- Ministry of Infrastructure (MININFRA)
-- Local municipalities
+- Agência Nacional de Transportes Terrestres (ANTT)
+- Ministério dos Transportes (MINTRANS)
+- Administração Municipal de Luanda
 - Development partners such as the World Bank, European Union, and African Development Bank
 
 ---
@@ -195,4 +192,4 @@ Potential stakeholders include:
 
 ## Conclusion
 
-TransportConnect Rwanda aims to become a foundational digital infrastructure for transport management in Rwanda. By combining real-time data, user participation, and intelligent systems, the platform enables more efficient, safe, and scalable mobility solutions aligned with national development goals.
+TransportConnect Angola aims to become a foundational digital infrastructure for transport management in Angola. By combining real-time data, user participation, and intelligent systems, the platform enables more efficient, safe, and scalable mobility solutions aligned with national development goals.

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Card,
@@ -6,9 +6,9 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import {
   ChartContainer,
   ChartTooltip,
@@ -16,8 +16,16 @@ import {
   ChartLegend,
   ChartLegendContent,
   type ChartConfig,
-} from "@/components/ui/chart";
-import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+} from '@/components/ui/chart';
+import {
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from 'recharts';
 import {
   Table,
   TableBody,
@@ -25,27 +33,26 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 import {
   Wallet,
   TrendingUp,
-  TrendingDown,
   ArrowUpRight,
   ArrowDownRight,
   Bus,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { MONTHLY_REVENUE, REVENUE_BY_LINE } from "@/lib/dashboard-data";
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { MONTHLY_REVENUE, REVENUE_BY_LINE } from '@/lib/dashboard-data';
 
 // ── Configs ──
 const revenueConfig = {
-  receita: { label: "Receita (k RWF)", color: "#22c55e" },
-  meta: { label: "Meta (k RWF)", color: "#3b82f6" },
+  receita: { label: 'Receita (k AOA)', color: '#22c55e' },
+  meta: { label: 'Meta (k AOA)', color: '#3b82f6' },
 } satisfies ChartConfig;
 
 const lineConfig = {
-  receita: { label: "Receita (k RWF)", color: "#22c55e" },
-  eficiencia: { label: "Eficiência (%)", color: "#a855f7" },
+  receita: { label: 'Receita (k AOA)', color: '#22c55e' },
+  eficiencia: { label: 'Eficiência (%)', color: '#a855f7' },
 } satisfies ChartConfig;
 
 // ── KPI card ──
@@ -70,8 +77,8 @@ function FinKPI({
         <p className="text-[11px] text-muted-foreground mt-0.5">{sub}</p>
         <div
           className={cn(
-            "flex items-center gap-1 mt-2 text-[11px] font-medium",
-            positive ? "text-emerald-400" : "text-red-400"
+            'flex items-center gap-1 mt-2 text-[11px] font-medium',
+            positive ? 'text-emerald-400' : 'text-red-400'
           )}
         >
           {positive ? (
@@ -127,7 +134,7 @@ export default function FinanceiroPage() {
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
         <FinKPI
           title="Receita — Dezembro"
-          value="RWF 612k"
+          value="AOA 612k"
           sub="melhor mês do ano"
           change={`+${revenueChange}% vs mês anterior`}
           positive={true}
@@ -135,13 +142,13 @@ export default function FinanceiroPage() {
         <FinKPI
           title="Meta Anual Atingida"
           value="104.2%"
-          sub="RWF 5.53M de RWF 5.30M"
-          change="Superada em RWF 230k"
+          sub="AOA 5.53M de AOA 5.30M"
+          change="Superada em AOA 230k"
           positive={true}
         />
         <FinKPI
           title="Receita por Passageiro"
-          value="RWF 0.72"
+          value="AOA 0.72"
           sub={`${totalPassengers.toLocaleString()} pass. activos`}
           change="−0.02 vs trimestre anterior"
           positive={false}
@@ -162,7 +169,7 @@ export default function FinanceiroPage() {
           <CardHeader className="pb-0">
             <CardTitle className="text-sm flex items-center gap-2">
               <TrendingUp className="size-4 text-emerald-400" />
-              Receita Mensal vs Meta (k RWF)
+              Receita Mensal vs Meta (k AOA)
             </CardTitle>
             <CardDescription className="text-xs">
               Comparativo de receita realizada e meta definida para 2026
@@ -181,15 +188,18 @@ export default function FinanceiroPage() {
                     <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                <CartesianGrid
+                  stroke="rgba(255,255,255,0.06)"
+                  vertical={false}
+                />
                 <XAxis
                   dataKey="month"
-                  tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                   domain={[300, 700]}
@@ -236,9 +246,7 @@ export default function FinanceiroPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-muted-foreground">{share}%</span>
-                      <span className="font-semibold">
-                        RWF {line.receita}k
-                      </span>
+                      <span className="font-semibold">AOA {line.receita}k</span>
                     </div>
                   </div>
                   <Progress value={share * 1.6} className="h-1" />
@@ -254,7 +262,7 @@ export default function FinanceiroPage() {
         {/* Bar chart */}
         <Card className="border-white/10 bg-card/60 backdrop-blur">
           <CardHeader className="pb-0">
-            <CardTitle className="text-sm">Receita por Linha (k RWF)</CardTitle>
+            <CardTitle className="text-sm">Receita por Linha (k AOA)</CardTitle>
             <CardDescription className="text-xs">
               Comparativo directo de receita entre linhas
             </CardDescription>
@@ -262,17 +270,20 @@ export default function FinanceiroPage() {
           <CardContent className="pt-4">
             <ChartContainer config={lineConfig} className="h-[200px] w-full">
               <BarChart data={REVENUE_BY_LINE} layout="vertical">
-                <CartesianGrid stroke="rgba(255,255,255,0.06)" horizontal={false} />
+                <CartesianGrid
+                  stroke="rgba(255,255,255,0.06)"
+                  horizontal={false}
+                />
                 <XAxis
                   type="number"
-                  tick={{ fontSize: 9, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 9, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
                   dataKey="linha"
                   type="category"
-                  tick={{ fontSize: 10, fill: "rgba(255,255,255,0.5)" }}
+                  tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.5)' }}
                   axisLine={false}
                   tickLine={false}
                   width={48}
@@ -292,7 +303,9 @@ export default function FinanceiroPage() {
         {/* Efficiency table */}
         <Card className="border-white/10 bg-card/60 backdrop-blur">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Eficiência Operacional por Linha</CardTitle>
+            <CardTitle className="text-sm">
+              Eficiência Operacional por Linha
+            </CardTitle>
             <CardDescription className="text-xs">
               Passageiros, receita e índice de eficiência
             </CardDescription>
@@ -301,10 +314,18 @@ export default function FinanceiroPage() {
             <Table>
               <TableHeader>
                 <TableRow className="border-white/8 hover:bg-transparent">
-                  <TableHead className="text-[10px] text-muted-foreground pl-4">Linha</TableHead>
-                  <TableHead className="text-[10px] text-muted-foreground">Pass./Dia</TableHead>
-                  <TableHead className="text-[10px] text-muted-foreground">Eficiência</TableHead>
-                  <TableHead className="text-[10px] text-muted-foreground">Estado</TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground pl-4">
+                    Linha
+                  </TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground">
+                    Pass./Dia
+                  </TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground">
+                    Eficiência
+                  </TableHead>
+                  <TableHead className="text-[10px] text-muted-foreground">
+                    Estado
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -331,19 +352,19 @@ export default function FinanceiroPage() {
                       <Badge
                         variant="outline"
                         className={cn(
-                          "text-[9px] h-4 px-1.5",
+                          'text-[9px] h-4 px-1.5',
                           line.eficiencia >= 85
-                            ? "border-emerald-500/30 text-emerald-400"
+                            ? 'border-emerald-500/30 text-emerald-400'
                             : line.eficiencia >= 75
-                            ? "border-amber-500/30 text-amber-400"
-                            : "border-red-500/30 text-red-400"
+                              ? 'border-amber-500/30 text-amber-400'
+                              : 'border-red-500/30 text-red-400'
                         )}
                       >
                         {line.eficiencia >= 85
-                          ? "Óptimo"
+                          ? 'Óptimo'
                           : line.eficiencia >= 75
-                          ? "Bom"
-                          : "Atenção"}
+                            ? 'Bom'
+                            : 'Atenção'}
                       </Badge>
                     </TableCell>
                   </TableRow>

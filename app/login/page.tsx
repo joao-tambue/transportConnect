@@ -28,31 +28,31 @@ import { cn } from '@/lib/utils';
 
 const ENTITIES = [
   {
-    id: 'rtda',
-    name: 'Rwanda Transport Development Agency',
-    short: 'RTDA',
+    id: 'antt',
+    name: 'Agência Nacional de Transportes Terrestres',
+    short: 'ANTT',
     icon: Shield,
     description: 'Administrador do sistema — acesso total a todos os dados',
     color: 'emerald',
-    email_hint: 'nome@rtda.gov.rw',
+    email_hint: 'nome@antt.gov.ao',
   },
   {
-    id: 'kigali',
-    name: 'Município de Kigali',
-    short: 'MK',
+    id: 'luanda',
+    name: 'Administração Municipal de Luanda',
+    short: 'AML',
     icon: Building2,
-    description: 'Gestão operacional e incidentes da região de Kigali',
+    description: 'Gestão operacional e incidentes da região de Luanda',
     color: 'blue',
-    email_hint: 'nome@kigalicity.gov.rw',
+    email_hint: 'nome@luanda.gov.ao',
   },
   {
-    id: 'mininfra',
-    name: 'MININFRA',
-    short: 'INFRA',
+    id: 'mintrans',
+    name: 'Ministério dos Transportes',
+    short: 'MINTRANS',
     icon: Landmark,
     description: 'Planeamento estratégico e infraestrutura nacional',
     color: 'purple',
-    email_hint: 'nome@mininfra.gov.rw',
+    email_hint: 'nome@mintrans.gov.ao',
   },
 ];
 
@@ -129,7 +129,7 @@ export default function LoginPage() {
           </div>
           <div className="text-center">
             <h1 className="font-bold text-xl leading-tight">
-              TransportConnect Rwanda
+              TransportConnect Angola
             </h1>
             <p className="text-sm text-muted-foreground mt-0.5">
               Painel de Gestão Institucional
@@ -207,7 +207,7 @@ export default function LoginPage() {
 
               <p className="text-center text-[11px] text-muted-foreground">
                 Acesso restrito a entidades autorizadas pelo{' '}
-                <span className="text-emerald-400">MININFRA</span>
+                <span className="text-emerald-400">MINTRANS</span>
               </p>
             </CardContent>
           </Card>

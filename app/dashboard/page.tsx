@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+
 import {
   ChartContainer,
   ChartTooltip,
@@ -19,7 +19,7 @@ import {
   ChartLegend,
   ChartLegendContent,
   type ChartConfig,
-} from "@/components/ui/chart";
+} from '@/components/ui/chart';
 import {
   BarChart,
   Bar,
@@ -28,7 +28,7 @@ import {
   CartesianGrid,
   AreaChart,
   Area,
-} from "recharts";
+} from 'recharts';
 import {
   Bus,
   Users,
@@ -38,48 +38,50 @@ import {
   TrendingDown,
   RefreshCw,
   Clock,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 import {
   VEHICLE_FLOW_DATA,
   CONGESTION_DATA,
   HEATMAP_REGIONS,
   ROUTES_PERFORMANCE,
-} from "@/lib/dashboard-data";
+} from '@/lib/dashboard-data';
 
 // ── Chart configs ──
 const vehicleFlowConfig = {
-  autocarros: { label: "Autocarros", color: "#22c55e" },
-  motos: { label: "Moto-táxis", color: "#f97316" },
+  autocarros: { label: 'Autocarros', color: '#22c55e' },
+  motos: { label: 'Moto-táxis', color: '#f97316' },
 } satisfies ChartConfig;
 
 const congestionConfig = {
-  nivel: { label: "Congestionamento (%)", color: "#3b82f6" },
+  nivel: { label: 'Congestionamento (%)', color: '#3b82f6' },
 } satisfies ChartConfig;
 
 // ── Helpers ──
 function heatmapColor(level: number) {
-  if (level >= 85) return "bg-red-500";
-  if (level >= 70) return "bg-orange-500";
-  if (level >= 55) return "bg-amber-500";
-  if (level >= 40) return "bg-yellow-500";
-  return "bg-emerald-500";
+  if (level >= 85) return 'bg-red-500';
+  if (level >= 70) return 'bg-orange-500';
+  if (level >= 55) return 'bg-amber-500';
+  if (level >= 40) return 'bg-yellow-500';
+  return 'bg-emerald-500';
 }
 
 function heatmapBadge(level: number) {
-  if (level >= 85) return "bg-red-500/15 text-red-400 border-red-500/30";
-  if (level >= 70) return "bg-orange-500/15 text-orange-400 border-orange-500/30";
-  if (level >= 55) return "bg-amber-500/15 text-amber-400 border-amber-500/30";
-  if (level >= 40) return "bg-yellow-500/15 text-yellow-400 border-yellow-500/30";
-  return "bg-emerald-500/15 text-emerald-400 border-emerald-500/30";
+  if (level >= 85) return 'bg-red-500/15 text-red-400 border-red-500/30';
+  if (level >= 70)
+    return 'bg-orange-500/15 text-orange-400 border-orange-500/30';
+  if (level >= 55) return 'bg-amber-500/15 text-amber-400 border-amber-500/30';
+  if (level >= 40)
+    return 'bg-yellow-500/15 text-yellow-400 border-yellow-500/30';
+  return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30';
 }
 
 function heatmapLabel(level: number) {
-  if (level >= 85) return "Crítico";
-  if (level >= 70) return "Alto";
-  if (level >= 55) return "Médio";
-  if (level >= 40) return "Baixo";
-  return "Normal";
+  if (level >= 85) return 'Crítico';
+  if (level >= 70) return 'Alto';
+  if (level >= 55) return 'Médio';
+  if (level >= 40) return 'Baixo';
+  return 'Normal';
 }
 
 // ── KPI Card ──
@@ -90,21 +92,21 @@ function KpiCard({
   icon: Icon,
   trend,
   trendLabel,
-  accent = "emerald",
+  accent = 'emerald',
 }: {
   title: string;
   value: string;
   sub?: string;
   icon: React.ElementType;
-  trend?: "up" | "down" | "warn";
+  trend?: 'up' | 'down' | 'warn';
   trendLabel?: string;
-  accent?: "emerald" | "blue" | "orange" | "red";
+  accent?: 'emerald' | 'blue' | 'orange' | 'red';
 }) {
   const accentColors = {
-    emerald: "bg-emerald-500/10 text-emerald-400",
-    blue: "bg-blue-500/10 text-blue-400",
-    orange: "bg-orange-500/10 text-orange-400",
-    red: "bg-red-500/10 text-red-400",
+    emerald: 'bg-emerald-500/10 text-emerald-400',
+    blue: 'bg-blue-500/10 text-blue-400',
+    orange: 'bg-orange-500/10 text-orange-400',
+    red: 'bg-red-500/10 text-red-400',
   };
   return (
     <Card className="border-white/10 bg-card/60 backdrop-blur w-full px-4">
@@ -119,7 +121,7 @@ function KpiCard({
           </div>
           <div
             className={cn(
-              "size-9 rounded-lg flex items-center justify-center shrink-0",
+              'size-9 rounded-lg flex items-center justify-center shrink-0',
               accentColors[accent]
             )}
           >
@@ -128,22 +130,22 @@ function KpiCard({
         </div>
         {trendLabel && (
           <div className="flex items-center gap-1 mt-3 text-[11px]">
-            {trend === "up" && (
+            {trend === 'up' && (
               <TrendingUp className="size-3 text-emerald-400" />
             )}
-            {trend === "down" && (
+            {trend === 'down' && (
               <TrendingDown className="size-3 text-red-400" />
             )}
-            {trend === "warn" && (
+            {trend === 'warn' && (
               <AlertTriangle className="size-3 text-amber-400" />
             )}
             <span
               className={cn(
-                trend === "up"
-                  ? "text-emerald-400"
-                  : trend === "down"
-                  ? "text-red-400"
-                  : "text-amber-400"
+                trend === 'up'
+                  ? 'text-emerald-400'
+                  : trend === 'down'
+                    ? 'text-red-400'
+                    : 'text-amber-400'
               )}
             >
               {trendLabel}
@@ -157,12 +159,12 @@ function KpiCard({
 
 // ── Page ──
 export default function OperationalDashboard() {
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState('');
   const [refreshed, setRefreshed] = useState(false);
 
   useEffect(() => {
     const tick = () => {
-      setTime(new Date().toLocaleTimeString("pt-PT", { timeStyle: "short" }));
+      setTime(new Date().toLocaleTimeString('pt-PT', { timeStyle: 'short' }));
     };
     tick();
     const id = setInterval(tick, 30000);
@@ -181,13 +183,13 @@ export default function OperationalDashboard() {
         <div>
           <h1 className="text-xl font-bold">Dashboard Operacional</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Monitoramento em tempo real — Kigali Metropolitan Area
+            Monitoramento em tempo real — Área Metropolitana de Luanda
           </p>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Clock className="size-3.5" />
-            Actualizado às {time || "—"}
+            Actualizado às {time || '—'}
           </div>
           <Button
             size="sm"
@@ -196,7 +198,7 @@ export default function OperationalDashboard() {
             onClick={handleRefresh}
           >
             <RefreshCw
-              className={cn("size-3.5 mr-1.5", refreshed && "animate-spin")}
+              className={cn('size-3.5 mr-1.5', refreshed && 'animate-spin')}
             />
             Actualizar
           </Button>
@@ -248,13 +250,18 @@ export default function OperationalDashboard() {
         {/* Vehicle Flow */}
         <Card className="border-white/10 bg-card/60 backdrop-blur xl:col-span-2">
           <CardHeader className="pb-0">
-            <CardTitle className="text-sm">Fluxo de Veículos por Hora</CardTitle>
+            <CardTitle className="text-sm">
+              Fluxo de Veículos por Hora
+            </CardTitle>
             <CardDescription className="text-xs">
               Autocarros e moto-táxis em circulação — hoje
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-4">
-            <ChartContainer config={vehicleFlowConfig} className="h-[220px] w-full">
+            <ChartContainer
+              config={vehicleFlowConfig}
+              className="h-[220px] w-full"
+            >
               <BarChart data={VEHICLE_FLOW_DATA} barGap={2}>
                 <CartesianGrid
                   vertical={false}
@@ -262,12 +269,12 @@ export default function OperationalDashboard() {
                 />
                 <XAxis
                   dataKey="hour"
-                  tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 10, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                 />
@@ -299,7 +306,10 @@ export default function OperationalDashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent className="pt-4">
-            <ChartContainer config={congestionConfig} className="h-[220px] w-full">
+            <ChartContainer
+              config={congestionConfig}
+              className="h-[220px] w-full"
+            >
               <AreaChart data={CONGESTION_DATA}>
                 <defs>
                   <linearGradient id="congGrad" x1="0" y1="0" x2="0" y2="1">
@@ -307,15 +317,18 @@ export default function OperationalDashboard() {
                     <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.02} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid stroke="rgba(255,255,255,0.06)" vertical={false} />
+                <CartesianGrid
+                  stroke="rgba(255,255,255,0.06)"
+                  vertical={false}
+                />
                 <XAxis
                   dataKey="hour"
-                  tick={{ fontSize: 9, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 9, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 9, fill: "rgba(255,255,255,0.4)" }}
+                  tick={{ fontSize: 9, fill: 'rgba(255,255,255,0.4)' }}
                   axisLine={false}
                   tickLine={false}
                   domain={[0, 100]}
@@ -339,7 +352,9 @@ export default function OperationalDashboard() {
         {/* Heatmap */}
         <Card className="border-white/10 bg-card/60 backdrop-blur">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Mapa de Calor — Congestionamento por Zona</CardTitle>
+            <CardTitle className="text-sm">
+              Mapa de Calor — Congestionamento por Zona
+            </CardTitle>
             <CardDescription className="text-xs">
               Nível actual de ocupação por região da cidade
             </CardDescription>
@@ -352,7 +367,10 @@ export default function OperationalDashboard() {
                   <div className="flex items-center gap-2">
                     <Badge
                       variant="outline"
-                      className={cn("text-[9px] h-4 px-1.5", heatmapBadge(r.level))}
+                      className={cn(
+                        'text-[9px] h-4 px-1.5',
+                        heatmapBadge(r.level)
+                      )}
                     >
                       {heatmapLabel(r.level)}
                     </Badge>
@@ -363,7 +381,10 @@ export default function OperationalDashboard() {
                 </div>
                 <div className="h-1.5 w-full bg-muted/30 rounded-full overflow-hidden">
                   <div
-                    className={cn("h-full rounded-full transition-all", heatmapColor(r.level))}
+                    className={cn(
+                      'h-full rounded-full transition-all',
+                      heatmapColor(r.level)
+                    )}
                     style={{ width: `${r.level}%` }}
                   />
                 </div>
@@ -387,8 +408,10 @@ export default function OperationalDashboard() {
                   <div className="flex items-center gap-2">
                     <span
                       className={cn(
-                        "w-1.5 h-1.5 rounded-full shrink-0",
-                        r.status === "active" ? "bg-emerald-500" : "bg-amber-500"
+                        'w-1.5 h-1.5 rounded-full shrink-0',
+                        r.status === 'active'
+                          ? 'bg-emerald-500'
+                          : 'bg-amber-500'
                       )}
                     />
                     <span className="text-xs font-medium">{r.route}</span>
@@ -399,13 +422,13 @@ export default function OperationalDashboard() {
                     <Badge
                       variant="outline"
                       className={cn(
-                        "text-[9px] h-4 px-1.5",
-                        r.status === "active"
-                          ? "border-emerald-500/30 text-emerald-400"
-                          : "border-amber-500/30 text-amber-400"
+                        'text-[9px] h-4 px-1.5',
+                        r.status === 'active'
+                          ? 'border-emerald-500/30 text-emerald-400'
+                          : 'border-amber-500/30 text-amber-400'
                       )}
                     >
-                      {r.status === "active" ? "Activa" : "Atraso"}
+                      {r.status === 'active' ? 'Activa' : 'Atraso'}
                     </Badge>
                   </div>
                 </div>
